@@ -74,6 +74,10 @@ export class LabListPage {
                                                     labListPage.labLocations = labListPage.labService.getLabLocations(labListPage.labs);
                                                     labListPage.campuses = labListPage.labService.getCampuses(data);
 
+                                                    if (labListPage.filters.selectedCampuses.length === 0) {
+                                                        labListPage.filters.setSelectedCampuses(labListPage.campuses);
+                                                    }
+
                                                     labListPage.mapService.getLabLocationsDistanceMatrix(
                                                         labListPage.currentLocation,
                                                         labListPage.labLocations,

@@ -14,7 +14,7 @@ export class Filters {
         return JSON.stringify(this);
     }
 
-    selectedCampuses(selectedCampuses) {
+    setSelectedCampuses(selectedCampuses) {
         this.selectedCampuses = selectedCampuses;
     }
 }
