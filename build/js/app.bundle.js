@@ -75,7 +75,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Filters = function () {
+var Filters = exports.Filters = function () {
     function Filters(data) {
         _classCallCheck(this, Filters);
 
@@ -94,16 +94,14 @@ var Filters = function () {
             return JSON.stringify(this);
         }
     }, {
-        key: "selectedCampuses",
-        value: function selectedCampuses(_selectedCampuses) {
-            this.selectedCampuses = _selectedCampuses;
+        key: "setSelectedCampuses",
+        value: function setSelectedCampuses(selectedCampuses) {
+            this.selectedCampuses = selectedCampuses;
         }
     }]);
 
     return Filters;
 }();
-
-exports.Filters = Filters;
 
 },{}],3:[function(require,module,exports){
 "use strict";
@@ -412,6 +410,10 @@ var LabListPage = exports.LabListPage = (_dec = (0, _ionicAngular.Page)({
                             labListPage.labs = data;
                             labListPage.labLocations = labListPage.labService.getLabLocations(labListPage.labs);
                             labListPage.campuses = labListPage.labService.getCampuses(data);
+
+                            if (labListPage.filters.selectedCampuses.length === 0) {
+                                labListPage.filters.setSelectedCampuses(labListPage.campuses);
+                            }
 
                             labListPage.mapService.getLabLocationsDistanceMatrix(labListPage.currentLocation, labListPage.labLocations, labListPage.settings.selectedTravelModes, labListPage.settings.selectedUnitSystems).then(function (distanceMatrix) {
                                 labListPage.distanceMatrix = distanceMatrix;
