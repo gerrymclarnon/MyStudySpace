@@ -1,0 +1,64 @@
+<ion-toolbar>
+    <ion-buttons start>
+        <button (click)="dismiss()">Cancel</button>
+    </ion-buttons>
+
+    <ion-title>
+        Settings
+    </ion-title>
+
+    <ion-buttons end>
+        <button (click)="applyFilters()">Done</button>
+    </ion-buttons>
+</ion-toolbar>
+
+
+<ion-content class="outer-content">
+
+    <ion-list>
+        <ion-list-header>Campuses</ion-list-header>
+
+        <ion-item *ngFor="#campus of campuses">
+            <span item-left class="dot"></span>
+            <ion-label>{{campus.name}}</ion-label>
+            <ion-toggle [(ngModel)]="campus.isChecked" secondary></ion-toggle>
+        </ion-item>
+
+    </ion-list>
+
+    <div class="range range-positive">
+        <p>3 mins - 10 mins</p>
+        <input type="range" name="volume" min="3" max="56" value="10" (touchstart)="onDrag($event)" (mousedown)="onDrag($event)">
+    </div>
+
+    <ion-list>
+        <ion-list-header>
+            Travel
+        </ion-list-header>
+
+        <ion-item>
+            <span item-left class="dot"></span>
+            <ion-label>Mode</ion-label>
+            <ion-select [(ngModel)]="selectedTravelModes">
+                <ion-option value="BICYCLING">Bicycling</ion-option>
+                <ion-option value="DRIVING">Driving</ion-option>
+                <ion-option value="TRANSIT">Public Transport</ion-option>
+                <ion-option value="WALKING">Walking</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <span item-left class="dot"></span>
+            <ion-label>Units</ion-label>
+            <ion-select [(ngModel)]="selectedUnitSystems">
+                <ion-option value="1">Imperial</ion-option>
+                <ion-option value="0">Metric</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <button full (click)="resetFilters()" danger detail-none class="reset-filters">
+        Reset All Filters
+    </button>
+
+</ion-content>
