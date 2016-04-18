@@ -1,0 +1,71 @@
+<ion-navbar *navbar primary>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>PC Access</ion-title>
+    <ion-buttons end>
+        <button (click)="showSettingsPage()">
+            <ion-icon ios="ios-settings-outline" md="md-options"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-navbar>
+
+<ion-content>
+    <ion-refresher (start)="doStart($event)"
+                   (refresh)="doRefresh($event)"
+                   (pulling)="doPulling($event)">
+        <ion-refresher-content
+                refreshingSpinner="circles"
+                refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ion-list-header *ngIf="!lastUpdated">Updating...</ion-list-header>
+    <ion-list-header *ngIf="lastUpdated">{{ filteredLabLocations.length }} out of {{ labLocations.length }} Locations -
+        {{lastUpdatedFromNowText}}
+    </ion-list-header>
+    <div id="map"></div>
+</ion-content>
+
+<ion-content>
+    <ion-list>
+
+        <ion-item-group *ngFor="#location of filteredLabLocations" (click)="itemTapped($event, location)">
+
+            <ion-item-divider brightBlue class="lab-list-item-divider">
+                <h6 class="lab-list-heading"><b>{{ location.buildingName | slice:0:25 }}{{ location.buildingName.length > 25 ? '...' : '' }}</b>
+                    <small> ∙ {{ location.free }} free ∙ {{ location.duration }} ({{ location.distance }})</small></h6>
+            </ion-item-divider>
+
+            <ion-item *ngFor="#lab of location.labs" (click)="itemTapped($event, location)" class="lab-list-item lab-list-label">
+                <ion-row class="lab-list-item-row">
+                    <ion-col width-20 text-left>
+                        <h2>{{lab.free}} free</h2>
+                    </ion-col>
+                    <ion-col width-80 text-left>
+                        <h2>{{ lab.buildingRoomName | slice:0:25 }}{{ lab.buildingRoomName.length > 25 ? '...' : ''
+                            }} ∙ <small>{{ lab.total }} Total</small></h2>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-item-group>
+    </ion-list>
+</ion-content>
+
+<ion-toolbar position="bottom">
+    <ion-segment [(ngModel)]="segment" (change)="sortResults(filteredLabLocations)">
+        <ion-segment-button value="free">
+            Free PCs
+        </ion-segment-button>
+        <ion-segment-button value="distance">
+            Distance
+        </ion-segment-button>
+    </ion-segment>
+
+    <ion-buttons end>
+        <button (click)="showFiltersPage()">
+            <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-toolbar>
+
