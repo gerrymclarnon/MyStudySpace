@@ -11,14 +11,14 @@
 </ion-navbar>
 
 <ion-content>
-    <ion-refresher (start)="doStart($event)"
-                   (refresh)="doRefresh($event)"
-                   (pulling)="doPulling($event)">
-        <ion-refresher-content
-                refreshingSpinner="circles"
-                refreshingText="Refreshing...">
-        </ion-refresher-content>
-    </ion-refresher>
+    <!--<ion-refresher (start)="doStart($event)"-->
+                   <!--(refresh)="doRefresh($event)"-->
+                   <!--(pulling)="doPulling($event)">-->
+        <!--<ion-refresher-content-->
+                <!--refreshingSpinner="circles"-->
+                <!--refreshingText="Refreshing...">-->
+        <!--</ion-refresher-content>-->
+    <!--</ion-refresher>-->
 
     <ion-list-header *ngIf="!lastUpdated">Updating...</ion-list-header>
     <ion-list-header *ngIf="lastUpdated">{{ filteredLabLocations.length }} out of {{ labLocations.length }} Locations -
