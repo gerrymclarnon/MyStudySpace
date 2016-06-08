@@ -1,8 +1,17 @@
-import {Injectable} from 'angular2/core';
+import {Injectable, Component, Output, EventEmitter} from '@angular/core';
 
+import {IONIC_DIRECTIVES} from 'ionic-angular';
+
+@Component({
+    // directives: [NgIf],
+    // properties: ['value'], //Change to be whatever properties you want, ex: <sync value="5">
+    //selector: 'syncServ',
+    //templateUrl: 'build/components/sync/sync.html'
+    directives: [IONIC_DIRECTIVES],
+    outputs: ['infowindowClicked']
+})
 @Injectable()
 export class MapService {
-
     static get parameters() {
         return [];
     }
@@ -16,6 +25,8 @@ export class MapService {
 
         this.markers = [];
         this.infoWindows = [];
+
+        this.infowindowClicked = new EventEmitter();
     }
 
     getMap(location, element) {
@@ -49,7 +60,7 @@ export class MapService {
         return promise;
     }
 
-    updateLabsOnMap(currentLocation, labLocations, map) {
+    updateLabsOnMap(currentLocation, labLocations, map, settings) {
         this.currentLocation = currentLocation;
 
         var bounds = new google.maps.LatLngBounds;
@@ -57,7 +68,7 @@ export class MapService {
         this.deleteMarkers(this.markers);
 
         for (let labLocation of labLocations) {
-            this.showLabLocationOnMap(map, this.markers, bounds, labLocation);
+            this.showLabLocationOnMap(map, this.markers, bounds, labLocation, settings);
         }
 
         this.showCurrentLocationOnMap(map, this.markers, bounds, currentLocation);
@@ -75,22 +86,23 @@ export class MapService {
     }
 
     showCurrentLocationOnMap(map, markers, bounds, location) {
-        var info =
+        var infoContent =
             `<h6>You are here.</h6>`;
 
-        this.showLocationOnMap(map, markers, bounds, location, this.locationIcon, info);
+        this.showLocationOnMap(map, markers, bounds, location, this.locationIcon, infoContent);
     }
 
     showLabLocationOnMap(map, markers, bounds, location) {
-        var info =
-            `<h6>${location.buildingName} ∙ ${location.free} free</h6>
-            <a href="${this.getDirectionsUrl(location)}">
-            ${location.duration} (${location.distance})</a>`;
+        var infoContent =
+            `<div id="infowindow">
+                <h6>${location.buildingName}</h6>
+                <p>${location.distance} ∙ ${location.free} computers free</p>
+            </div>`;
 
-        this.showLocationOnMap(map, markers, bounds, location, this.destinationIcon, info);
+        this.showLocationOnMap(map, markers, bounds, location, this.destinationIcon, infoContent);
     }
 
-    showLocationOnMap(map, markers, bounds, location, icon, info) {
+    showLocationOnMap(map, markers, bounds, location, icon, infoContent) {
         let mapService = this;
 
         let position = new google.maps.LatLng(location.lat, location.lng);
@@ -98,7 +110,7 @@ export class MapService {
         map.fitBounds(bounds.extend(position));
 
         let infoWindow = new google.maps.InfoWindow({
-            content: info
+            content: infoContent
         });
 
         mapService.infoWindows.push(infoWindow);
@@ -113,15 +125,16 @@ export class MapService {
             for (let openInfoWindow of mapService.infoWindows) {
                 openInfoWindow.close();
             }
+
+            google.maps.event.addListener(infoWindow, 'domready', function() {
+                document.getElementById("infowindow").addEventListener('click', function() {
+                    mapService.infowindowClicked.emit(location);
+                })
+            });
+
             infoWindow.open(map, marker);
         });
 
         markers.push(marker);
-    }
-
-    getDirectionsUrl(location) {
-        let url = 'https://www.google.com/maps/preview?saddr=' + this.currentLocation.lat + ',' + this.currentLocation.lng + '&daddr=' + location.lat + ',' + location.lng + '&dirflg=w';
-        //window.open(url, "_self", "location=yes");
-        return url;
     }
 }

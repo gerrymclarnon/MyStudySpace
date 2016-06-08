@@ -1,4 +1,6 @@
-import {App, Platform} from 'ionic-angular';
+import {Component} from "@angular/core";
+import {Platform, ionicBootstrap} from 'ionic-angular';
+
 import {LabListPage} from './pages/lab-list/lab-list';
 //import {LabService} from './services/lab-service';
 import {LocationService} from './services/location-service';
@@ -7,34 +9,25 @@ import {LabService} from './services-mocks/lab-service';
 import {StorageService} from './services/storage-service';
 
 
-@App({
-  template: '<ion-nav [root]="rootPage"></ion-nav>',
-  config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
-  providers: [LocationService, MapService, LabService, StorageService]
+@Component({
+    template: '<ion-nav [root]="rootPage"></ion-nav>',
+    //config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
+    providers: [LocationService, MapService, LabService, StorageService]
 })
 export class MyStudySpaceApp {
-  static get parameters() {
-    return [[Platform]];
-  }
+    static get parameters() {
+        return [[Platform]];
+    }
 
-  constructor(platform) {
-    this.rootPage = LabListPage;
+    constructor(platform) {
+        this.rootPage = LabListPage;
 
-    platform.ready().then(() => {
-      // The platform is now ready. Note: if this callback fails to fire, follow
-      // the Troubleshooting guide for a number of possible solutions:
-      //
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      //
-      // First, let's hide the keyboard accessory bar (only works natively) since
-      // that's a better default:
-      //
-      // Keyboard.setAccessoryBarVisible(false);
-      //
-      // For example, we might change the StatusBar color. This one below is
-      // good for dark backgrounds and light text:
-      // StatusBar.setStyle(StatusBar.LIGHT_CONTENT)
-    });
-  }
+        platform.ready().then(() => {
+            // Okay, so the platform is ready and our plugins are available.
+            // Here you can do any higher level native things you might need.
+            //StatusBar.styleDefault();
+        });
+    }
 }
+
+ionicBootstrap(MyStudySpaceApp)

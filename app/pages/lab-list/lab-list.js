@@ -1,10 +1,11 @@
-import {OnInit} from 'angular2/core';
+import {OnInit} from '@angular/core';
 import {Page, NavController, NavParams, Modal} from 'ionic-angular';
 import {LocationService} from '../../services/location-service';
 import {MapService} from '../../services/map-service';
 import {LabService} from '../../services-mocks/lab-service';
 //import {LabService} from '../../services/lab-service';
 import {StorageService} from '../../services/storage-service';
+import {LocationDetailsPage} from '../location-details/location-details';
 import {SettingsPage} from '../settings/settings';
 import {FiltersPage} from '../filters/filters';
 import {Settings} from '../../models/settings';
@@ -30,7 +31,6 @@ export class LabListPage {
         this.storageService = storageService;
 
         this.lastUpdated = null;
-        this.segment = 'free';
 
         this.settings = new Settings();
         this.filters = null;
@@ -99,6 +99,15 @@ export class LabListPage {
                                                                     labListPage.currentLocation,
                                                                     labListPage.filteredLabLocations,
                                                                     labListPage.map);
+
+                                                                labListPage.mapService.infowindowClicked
+                                                                    .subscribe(
+                                                                        location => {
+                                                                            labListPage.itemTapped(null, location);
+                                                                        },
+                                                                        err => console.error(err),
+                                                                        () => console.log(`infowindlow clicked`)
+                                                                    );
 
                                                                 if (refresher) {
                                                                     refresher.complete();
@@ -170,26 +179,18 @@ export class LabListPage {
         if (labLocations === undefined) {
             return labLocations;
         } else {
-            let segment = this.segment;
-
             labLocations.sort(
                 (a, b) => {
-                    if (segment === "free") {
-                        return b.free - a.free;
-                    } else if (segment === "distance") {
-                        return (a.durationValue < b.durationValue) ? -1 : (a.durationValue > b.durationValue) ? 1 : 0;
-                    }
+                    return (a.durationValue < b.durationValue) ? -1 : (a.durationValue > b.durationValue) ? 1 : 0;
                 }
             );
 
-            if (segment === "free") {
-                for (let labLocation of labLocations) {
-                    labLocation.labs.sort(
-                        (a, b) => {
-                            return b.free - a.free;
-                        }
-                    );
-                }
+            for (let labLocation of labLocations) {
+                labLocation.labs.sort(
+                    (a, b) => {
+                        return b.free - a.free;
+                    }
+                );
             }
 
             return labLocations;
@@ -228,8 +229,11 @@ export class LabListPage {
     }
 
     itemTapped(event, location) {
-        let url = 'https://www.google.com/maps/preview?saddr=' + this.currentLocation.lat + ',' + this.currentLocation.lng + '&daddr=' + location.lat + ',' + location.lng + '&dirflg=w';
-        window.open(url, "_self", "location=yes");
+        this.nav.push(LocationDetailsPage, {
+            location: location,
+            currentLocation: this.currentLocation,
+            settings: this.settings
+        });
     }
 
     doRefresh(refresher) {
@@ -283,7 +287,8 @@ export class LabListPage {
                 labListPage.mapService.updateLabsOnMap(
                     labListPage.currentLocation,
                     labListPage.filteredLabLocations,
-                    labListPage.map);
+                    labListPage.map,
+                    labListPage.settings);
             }
         });
     }
