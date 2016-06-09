@@ -1,5 +1,5 @@
-import {OnInit} from '@angular/core';
-import {Page, NavController, NavParams, Modal} from 'ionic-angular';
+import {OnInit, ViewChild} from '@angular/core';
+import {Page, NavController, NavParams, Modal, Content} from 'ionic-angular';
 import {LocationService} from '../../services/location-service';
 import {MapService} from '../../services/map-service';
 import {LabService} from '../../services-mocks/lab-service';
@@ -15,9 +15,13 @@ import moment from 'moment';
 
 
 @Page({
-    templateUrl: 'build/pages/lab-list/lab-list.html'
+    templateUrl: 'build/pages/lab-list/lab-list.html',
+    queries: {
+        locationList: new ViewChild('locationList')
+    }
 })
 export class LabListPage {
+
     static get parameters() {
         return [[NavController], [NavParams], [LocationService], [MapService], [LabService], [StorageService]];
     }
@@ -100,10 +104,19 @@ export class LabListPage {
                                                                     labListPage.filteredLabLocations,
                                                                     labListPage.map);
 
+                                                                //labListPage.mapService.infowindowOpened
+                                                                //    .subscribe(
+                                                                //        location => {
+                                                                //            labListPage.itemSelected(null, location);
+                                                                //        },
+                                                                //        err => console.error(err),
+                                                                //        () => console.log(`infowindlow clicked`)
+                                                                //    );
+
                                                                 labListPage.mapService.infowindowClicked
                                                                     .subscribe(
                                                                         location => {
-                                                                            labListPage.itemTapped(null, location);
+                                                                            labListPage.itemSelected(null, location);
                                                                         },
                                                                         err => console.error(err),
                                                                         () => console.log(`infowindlow clicked`)
@@ -228,12 +241,30 @@ export class LabListPage {
         return moment ? moment.fromNow() : '';
     }
 
+    itemSelected(event, location) {
+        if (this.selectedItem === location) {
+            this.nav.push(LocationDetailsPage, {
+                location: location,
+                currentLocation: this.currentLocation,
+                settings: this.settings
+            });
+        } else {
+            this.selectedItem = location;
+            //this.locationList.scrollTo(0, 500, 200);
+        }
+    }
+
     itemTapped(event, location) {
-        this.nav.push(LocationDetailsPage, {
-            location: location,
-            currentLocation: this.currentLocation,
-            settings: this.settings
-        });
+        if (this.selectedItem === location) {
+            this.nav.push(LocationDetailsPage, {
+                location: location,
+                currentLocation: this.currentLocation,
+                settings: this.settings
+            });
+        } else {
+            this.selectedItem = location;
+            this.mapService.showInfoWindow(location);
+        }
     }
 
     doRefresh(refresher) {

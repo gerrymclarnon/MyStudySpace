@@ -8,7 +8,7 @@ import {IONIC_DIRECTIVES} from 'ionic-angular';
     //selector: 'syncServ',
     //templateUrl: 'build/components/sync/sync.html'
     directives: [IONIC_DIRECTIVES],
-    outputs: ['infowindowClicked']
+    outputs: ['infowindowOpened', 'infowindowClicked']
 })
 @Injectable()
 export class MapService {
@@ -27,6 +27,7 @@ export class MapService {
         this.infoWindows = [];
 
         this.infowindowClicked = new EventEmitter();
+        this.infowindowOpened = new EventEmitter();
     }
 
     getMap(location, element) {
@@ -133,8 +134,20 @@ export class MapService {
             });
 
             infoWindow.open(map, marker);
+            mapService.infowindowClicked.emit(location);
         });
 
         markers.push(marker);
+    }
+
+    showInfoWindow(location) {
+        let mapService = this;
+
+        for (let marker of mapService.markers) {
+            if (marker.position.lat() === location.lat &&
+                marker.position.lng() === location.lng) {
+                google.maps.event.trigger(marker, 'click');
+            }
+        }
     }
 }
