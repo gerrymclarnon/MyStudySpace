@@ -81,10 +81,19 @@ export class LabService {
         return destinations;
     }
 
-    getCampuses(labs) {
-        let labsMap = labs.map(lab => lab.campusName);
-        let labsSet = new Set<any>(labsMap);
-        return [...labsSet];
+    getCampuses(labs):Array<string> {
+        let labsArray = labs.map(lab => lab.campusName);
+
+        // It would be nice to us this ES6 technique but the combination of Set and Type
+        // isn't supported in the current ES6 shim.
+        //let labsSet = new Set(labsArray);
+        //return [...labsSet];
+
+        let uniqueArray = labsArray.filter(function(item, pos, self) {
+            return self.indexOf(item) == pos;
+        });
+
+        return uniqueArray;
     }
 
     initLabDistanceDuration(labs) {

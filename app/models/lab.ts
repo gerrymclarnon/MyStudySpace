@@ -20,7 +20,7 @@ export class Lab {
         }
     }
 
-    toString() {
-        return JSON.stringify(this);
-    }
+    //toString() {
+    //    return JSON.stringify(this);
+    //}
 }

@@ -587,7 +587,6 @@ export var Labs:Lab[] =
             latitude: 55.9235759115671200,
             free: "11",
             total: "20",
-            location: "KB Labs KB Centre Level 2 - Side 20 Seat",
             campusName: "KB Labs"
         },
         {
