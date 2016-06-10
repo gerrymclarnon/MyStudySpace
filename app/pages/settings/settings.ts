@@ -6,11 +6,13 @@ import {Settings, DEFAULT_TRAVEL_MODE, DEFAULT_UNIT_SYSTEM} from '../../models/s
     templateUrl: 'build/pages/settings/settings.html'
 })
 export class SettingsPage {
-    static get parameters() {
-        return [[NavController], [NavParams], [ViewController], [StorageService]];
-    }
+    private selectedTravelModes:any;
+    private selectedUnitSystems:any;
 
-    constructor(nav, navParams, viewCtrl, storageService) {
+    constructor(private nav:NavController,
+                private navParams:NavParams,
+                private viewCtrl:ViewController,
+                private storageService:StorageService) {
         this.nav = nav;
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;
@@ -20,19 +22,19 @@ export class SettingsPage {
         this.selectedUnitSystems = [this.navParams.data.settings.selectedUnitSystems];
     }
 
-    resetFilters() {
+    resetFilters():void {
         this.selectedTravelModes = [DEFAULT_TRAVEL_MODE];
         this.selectedUnitSystems = [DEFAULT_UNIT_SYSTEM];
     }
 
-    applyFilters() {
+    applyFilters():void {
         this.dismiss({
             selectedTravelModes: this.selectedTravelModes,
             selectedUnitSystems: this.selectedUnitSystems
         });
     }
 
-    dismiss(data) {
+    dismiss(data:any):void {
         this.storageService.storage.set('settings', JSON.stringify(data));
         this.viewCtrl.dismiss(data);
     }

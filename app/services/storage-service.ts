@@ -4,9 +4,7 @@ import {Storage, SqlStorage} from 'ionic-angular';
 @Injectable()
 export class StorageService {
 
-    static get parameters() {
-        return [];
-    }
+    storage:Storage;
 
     constructor() {
         this.storage = new Storage(SqlStorage);

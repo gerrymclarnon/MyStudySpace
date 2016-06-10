@@ -12,9 +12,15 @@ import {IONIC_DIRECTIVES} from 'ionic-angular';
 })
 @Injectable()
 export class MapService {
-    static get parameters() {
-        return [];
-    }
+
+    private locationIcon:any;
+    private destinationIcon:any;
+
+    private markers:any;
+    private infoWindows:any;
+    public infowindowClicked:EventEmitter<Location>;
+    public infowindowOpened:EventEmitter<Location>;
+    private currentLocation:any;
 
     constructor() {
         this.locationIcon = 'https://chart.googleapis.com/chart?' +
@@ -30,15 +36,16 @@ export class MapService {
         this.infowindowOpened = new EventEmitter();
     }
 
-    getMap(location, element) {
-        return new google.maps.Map(element, {
-            center: {lat: location.lat, lng: location.lng},
+    getMap(location, element):google.maps.Map {
+        let mapOptions = {
+            center: new google.maps.LatLng(location.lat, location.lng),
             zoom: 14,
             disableDefaultUI: true
-        });
+        };
+        return new google.maps.Map(element, mapOptions);
     }
 
-    getLabLocationsDistanceMatrix(location, destinations, travelMode, unitSystem) {
+    getLabLocationsDistanceMatrix(location, destinations, travelMode, unitSystem):Promise<any> {
         var service = new google.maps.DistanceMatrixService;
 
         var promise = new Promise(
@@ -61,7 +68,7 @@ export class MapService {
         return promise;
     }
 
-    updateLabsOnMap(currentLocation, labLocations, map, settings) {
+    updateLabsOnMap(currentLocation, labLocations, map):void {
         this.currentLocation = currentLocation;
 
         var bounds = new google.maps.LatLngBounds;
@@ -69,31 +76,31 @@ export class MapService {
         this.deleteMarkers(this.markers);
 
         for (let labLocation of labLocations) {
-            this.showLabLocationOnMap(map, this.markers, bounds, labLocation, settings);
+            this.showLabLocationOnMap(map, this.markers, bounds, labLocation);
         }
 
         this.showCurrentLocationOnMap(map, this.markers, bounds, currentLocation);
     }
 
-    deleteMarkers(markers) {
+    deleteMarkers(markers):void {
         for (var i = 0; i < markers.length; i++) {
             markers[i].setMap(null);
         }
         markers = [];
     }
 
-    deleteInfoWindows(infoWindows) {
+    deleteInfoWindows(infoWindows):void {
         infoWindows = [];
     }
 
-    showCurrentLocationOnMap(map, markers, bounds, location) {
+    showCurrentLocationOnMap(map, markers, bounds, location):void {
         var infoContent =
             `<h6>You are here.</h6>`;
 
         this.showLocationOnMap(map, markers, bounds, location, this.locationIcon, infoContent);
     }
 
-    showLabLocationOnMap(map, markers, bounds, location) {
+    showLabLocationOnMap(map, markers, bounds, location):void {
         var infoContent =
             `<div id="infowindow">
                 <h6>${location.buildingName}</h6>
@@ -103,7 +110,7 @@ export class MapService {
         this.showLocationOnMap(map, markers, bounds, location, this.destinationIcon, infoContent);
     }
 
-    showLocationOnMap(map, markers, bounds, location, icon, infoContent) {
+    showLocationOnMap(map, markers, bounds, location, icon, infoContent):void {
         let mapService = this;
 
         let position = new google.maps.LatLng(location.lat, location.lng);
@@ -140,7 +147,7 @@ export class MapService {
         markers.push(marker);
     }
 
-    showInfoWindow(location) {
+    showInfoWindow(location):void {
         let mapService = this;
 
         for (let marker of mapService.markers) {

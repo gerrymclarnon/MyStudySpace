@@ -1,5 +1,7 @@
 export class Filters {
 
+    selectedCampuses: any;
+
     constructor(data) {
         if (data) {
             let json = JSON.parse(data);

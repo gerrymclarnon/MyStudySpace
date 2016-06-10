@@ -7,11 +7,8 @@ import {Lab} from '../models/lab';
 @Injectable()
 export class LabService {
 
-    static get parameters() {
-        return [[Http]];
-    }
 
-    constructor (http) {
+    constructor (private http:Http) {
         this.http = http;
     }
 
@@ -85,7 +82,9 @@ export class LabService {
     }
 
     getCampuses(labs) {
-        return [...new Set(labs.map(lab => lab.campusName))];
+        let labsMap = labs.map(lab => lab.campusName);
+        let labsSet = new Set<any>(labsMap);
+        return [...labsSet];
     }
 
     initLabDistanceDuration(labs) {

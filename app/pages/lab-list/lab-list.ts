@@ -11,7 +11,7 @@ import {FiltersPage} from '../filters/filters';
 import {Settings} from '../../models/settings';
 import {Filters} from '../../models/filters';
 import {Location} from '../../models/location';
-import moment from 'moment';
+import * as moment from 'moment';
 
 
 @Page({
@@ -22,11 +22,27 @@ import moment from 'moment';
 })
 export class LabListPage {
 
-    static get parameters() {
-        return [[NavController], [NavParams], [LocationService], [MapService], [LabService], [StorageService]];
-    }
+    selectedItem:Location;
 
-    constructor(nav, navParams, locationService, mapService, labService, storageService) {
+    private lastUpdated:string;
+    private settings:Settings;
+    private lastUpdatedFromNowText:string;
+    private filters:Filters;
+
+    private currentLocation:any;
+    private map:google.maps.Map;
+    private labs:any;
+    private labLocations:any;
+    private campuses:any;
+    private distanceMatrix:any;
+    private filteredLabLocations:any;
+
+    constructor(private nav:NavController,
+                private navParams:NavParams,
+                private locationService:LocationService,
+                private mapService:MapService,
+                private labService:LabService,
+                private storageService:StorageService) {
         this.nav = nav;
         this.selectedItem = navParams.get('item');
         this.locationService = locationService;
@@ -36,7 +52,7 @@ export class LabListPage {
 
         this.lastUpdated = null;
 
-        this.settings = new Settings();
+        this.settings = new Settings(null);
         this.filters = null;
 
         setInterval(() => {
@@ -45,7 +61,7 @@ export class LabListPage {
     }
 
     ngOnInit() {
-        this.getLabPcAvailabilityAndDistance();
+        this.getLabPcAvailabilityAndDistance(null);
     }
 
     getLabPcAvailabilityAndDistance(refresher) {
@@ -145,7 +161,7 @@ export class LabListPage {
         try {
             settings = new Settings(data);
         } catch (error) {
-            settings = new Settings();
+            settings = new Settings(null);
         }
 
         return settings;
@@ -156,7 +172,7 @@ export class LabListPage {
         try {
             filters = new Filters(data);
         } catch (error) {
-            filters = new Filters();
+            filters = new Filters(null);
         }
 
         return filters;
@@ -292,7 +308,7 @@ export class LabListPage {
             if (data) {
                 labListPage.settings = data;
 
-                labListPage.getLabPcAvailabilityAndDistance();
+                labListPage.getLabPcAvailabilityAndDistance(null);
             }
         });
     }
@@ -318,8 +334,7 @@ export class LabListPage {
                 labListPage.mapService.updateLabsOnMap(
                     labListPage.currentLocation,
                     labListPage.filteredLabLocations,
-                    labListPage.map,
-                    labListPage.settings);
+                    labListPage.map);
             }
         });
     }

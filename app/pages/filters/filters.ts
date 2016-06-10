@@ -5,11 +5,14 @@ import {StorageService} from '../../services/storage-service';
     templateUrl: 'build/pages/filters/filters.html'
 })
 export class FiltersPage {
-    static get parameters() {
-        return [[NavController], [NavParams], [ViewController], [StorageService]];
-    }
+    selectedCampuses:any;
+    allCampuses:any;
+    campuses:any;
 
-    constructor(nav, navParams, viewCtrl, storageService) {
+    constructor(private nav:NavController,
+                private navParams:NavParams,
+                private viewCtrl:ViewController,
+                private storageService:StorageService) {
         this.nav = nav;
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;

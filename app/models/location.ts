@@ -1,5 +1,8 @@
 export class Location {
 
+    lat:string;
+    lng:string;
+
     constructor(data) {
         if (data) {
             this.lat = data.lat;

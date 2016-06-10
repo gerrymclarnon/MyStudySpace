@@ -9,11 +9,7 @@ let labsURL = SERVER_URL;
 @Injectable()
 export class LabService {
 
-    static get parameters() {
-        return [[Http]];
-    }
-
-    constructor (http) {
+    constructor (private http:Http) {
         this.http = http;
     }
 

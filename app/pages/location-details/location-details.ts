@@ -5,32 +5,29 @@ import {MapService} from '../../services/map-service';
 import {LabService} from '../../services-mocks/lab-service';
 import {Location} from '../../models/location';
 import {Settings} from '../../models/settings';
-import moment from 'moment';
 
 
 @Page({
     templateUrl: 'build/pages/location-details/location-details.html'
 })
 export class LocationDetailsPage {
-    static get parameters() {
-        return [[NavController], [NavParams]];
-    }
 
-    constructor(nav, navParams) {
+    private location:Location;
+    private currentLocation:Location;
+    private settings:Settings;
+
+    constructor(private nav:NavController,
+                private navParams:NavParams) {
         this.nav = nav;
         this.location = navParams.get('location');
         this.currentLocation = navParams.get('currentLocation');
         this.settings = navParams.get('settings');
-
-        this.lastUpdated = null;
-
-        this.filters = null;
     }
 
     ngOnInit() {
     }
 
-    itemTapped(event, location) {
+    itemTapped(event:any, location:Location):void {
         let url = 'https://www.google.com/maps/preview?saddr=' + this.currentLocation.lat + ',' + this.currentLocation.lng + '&daddr=' + location.lat + ',' + location.lng + '&dirflg=' + this.settings.getDirflg();
         window.open(url, "_blank", "location=yes");
     }

@@ -3,6 +3,9 @@ export const DEFAULT_UNIT_SYSTEM = "1";
 
 export class Settings {
 
+    selectedTravelModes:string;
+    selectedUnitSystems:string;
+
     static get DEFAULT_TRAVEL_MODE() {
         return DEFAULT_TRAVEL_MODE;
     }
