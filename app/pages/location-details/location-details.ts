@@ -1,5 +1,5 @@
 import {OnInit} from '@angular/core';
-import {Page, NavController, NavParams, Modal} from 'ionic-angular';
+import {Page, NavParams} from 'ionic-angular';
 import {LocationService} from '../../services/location-service';
 import {MapService} from '../../services/map-service';
 import {LabService} from '../../services-mocks/lab-service';
@@ -16,9 +16,7 @@ export class LocationDetailsPage {
     private currentLocation:Location;
     private settings:Settings;
 
-    constructor(private nav:NavController,
-                private navParams:NavParams) {
-        this.nav = nav;
+    constructor(private navParams:NavParams) {
         this.location = navParams.get('location');
         this.currentLocation = navParams.get('currentLocation');
         this.settings = navParams.get('settings');
@@ -28,7 +26,7 @@ export class LocationDetailsPage {
     }
 
     itemTapped(event:any, location:Location):void {
-        let url = 'https://www.google.com/maps/preview?saddr=' + this.currentLocation.lat + ',' + this.currentLocation.lng + '&daddr=' + location.lat + ',' + location.lng + '&dirflg=' + this.settings.getDirflg();
+        let url = 'https://www.google.com/maps/preview?saddr=' + this.currentLocation.latLng.lat() + ',' + this.currentLocation.latLng.lng() + '&daddr=' + location.latLng.lat() + ',' + location.latLng.lng() + '&dirflg=' + this.settings.getDirflg();
         window.open(url, "_blank", "location=yes");
     }
 }

@@ -14,15 +14,50 @@
 
 .lab-list-item {
   min-height: 3.5rem;
+  width: 100%;
+  border-bottom: 1px solid #dedede;
 }
 
 .lab-list-label {
   margin: 0 0 0 0;
+  //border-bottom: 1px solid #dedede;
 }
 
-//ion-label {
-//  margin: 12px 8px 13px 0;
-//}
+.item {
+  width: 100%;
+  padding-left: 0;
+}
+
+item-inner {
+  border-bottom: none;
+}
+
+ion-list .item-inner {
+  border-bottom: none;
+}
+
 .selected {
   background: #eee;
+}
+
+.item-inner {
+  padding: 3px 0 3px 0;
+}
+
+.input-wrapper ion-label {
+  margin: 0 0 0 0;
+}
+
+.item-inner {
+  padding-right: 0;
+}
+
+button.item:not([detail-none]) .item-inner,
+a.item:not([detail-none]) .item-inner,
+.item[detail-push] .item-inner {
+  background-image: none;
+  padding-right: 16px;
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px 14px;
 }

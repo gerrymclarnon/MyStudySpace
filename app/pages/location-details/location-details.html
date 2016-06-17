@@ -13,30 +13,33 @@
     </div>
 
     <ion-list>
-        <ion-item (click)="itemTapped($event, location)" class="lab-list-item lab-list-label">
-            <ion-row class="lab-list-item-row">
-                <ion-col width-30 text-left>
-                    <h2>Directions</h2>
-                </ion-col>
-                <ion-col width-50 text-right>
-                    <h2>{{ location.duration }}</h2>
-                </ion-col>
-                <ion-col width-10 *ngIf="settings.selectedTravelModes === 'BICYCLING'">
-                    <ion-icon name="bicycle"></ion-icon>
-                </ion-col>
-                <ion-col width-10 *ngIf="settings.selectedTravelModes === 'DRIVING'">
-                    <ion-icon name="car"></ion-icon>
-                </ion-col>
-                <ion-col width-10 *ngIf="settings.selectedTravelModes === 'TRANSIT'">
-                    <ion-icon name="train"></ion-icon>
-                </ion-col>
-                <ion-col width-10 *ngIf="settings.selectedTravelModes === 'WALKING'">
-                    <ion-icon name="walk"></ion-icon>
-                </ion-col>
-                <ion-col width-10>
-                    <ion-icon name="arrow-forward"></ion-icon>
-                </ion-col>
-            </ion-row>
+        <ion-item class="lab-list-label lab-list-item">
+            <button ion-item (click)="itemTapped($event, location)"
+                    class="lab-list-label">
+                <ion-row class="lab-list-item-row">
+                    <ion-col width-30 text-left>
+                        <h2>Directions</h2>
+                    </ion-col>
+                    <ion-col width-50 text-right>
+                        <h2>{{ location.duration }}</h2>
+                    </ion-col>
+                    <ion-col width-10 *ngIf="settings.selectedTravelModes === 'BICYCLING'">
+                        <ion-icon name="bicycle"></ion-icon>
+                    </ion-col>
+                    <ion-col width-10 *ngIf="settings.selectedTravelModes === 'DRIVING'">
+                        <ion-icon name="car"></ion-icon>
+                    </ion-col>
+                    <ion-col width-10 *ngIf="settings.selectedTravelModes === 'TRANSIT'">
+                        <ion-icon name="train"></ion-icon>
+                    </ion-col>
+                    <ion-col width-10 *ngIf="settings.selectedTravelModes === 'WALKING'">
+                        <ion-icon name="walk"></ion-icon>
+                    </ion-col>
+                    <ion-col width-10>
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </button>
         </ion-item>
     </ion-list>
 

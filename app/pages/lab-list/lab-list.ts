@@ -29,13 +29,13 @@ export class LabListPage {
     private lastUpdatedFromNowText:string;
     private filters:Filters;
 
-    private currentLocation:any;
+    private currentLocation:Location;
     private map:google.maps.Map;
     private labs:any;
-    private labLocations:any;
+    private labLocations:Location[];
     private campuses:any;
     private distanceMatrix:any;
-    private filteredLabLocations:any;
+    private filteredLabLocations:Location[];
 
     constructor(private nav:NavController,
                 private navParams:NavParams,
@@ -73,11 +73,15 @@ export class LabListPage {
             .then(
                 (settingsData) => {
 
+                    console.debug(`settingsData: ${settingsData}`);
+
                     labListPage.settings = labListPage.getSettings(settingsData);
 
                     labListPage.storageService.storage.get('filters')
                         .then(
                             (filtersData) => {
+
+                                console.debug(`filtersData: ${filtersData}`);
 
                                 labListPage.filters = labListPage.getFilters(filtersData);
 
@@ -85,11 +89,16 @@ export class LabListPage {
                                     .then(
                                         (currentLocation) => {
 
+                                            console.debug(`currentLocation: ${currentLocation}`);
+
                                             this.currentLocation = currentLocation;
                                             this.map = this.mapService.getMap(this.currentLocation, document.getElementById('map'));
 
                                             labListPage.labService.findAll().subscribe(
                                                 (data) => {
+
+                                                    console.debug(`labs: ${data}`);
+
                                                     labListPage.labs = data;
                                                     labListPage.labLocations = labListPage.labService.getLabLocations(labListPage.labs);
                                                     labListPage.campuses = labListPage.labService.getCampuses(data);
@@ -105,6 +114,9 @@ export class LabListPage {
                                                         labListPage.settings.selectedUnitSystems)
                                                         .then(
                                                             (distanceMatrix) => {
+
+                                                                console.debug(`distanceMatrix: ${distanceMatrix}`);
+
                                                                 labListPage.distanceMatrix = distanceMatrix;
                                                                 labListPage.updateLastUpdated(moment());
 
@@ -120,14 +132,14 @@ export class LabListPage {
                                                                     labListPage.filteredLabLocations,
                                                                     labListPage.map);
 
-                                                                //labListPage.mapService.infowindowOpened
-                                                                //    .subscribe(
-                                                                //        location => {
-                                                                //            labListPage.itemSelected(null, location);
-                                                                //        },
-                                                                //        err => console.error(err),
-                                                                //        () => console.log(`infowindlow clicked`)
-                                                                //    );
+                                                                labListPage.mapService.infowindowOpened
+                                                                    .subscribe(
+                                                                        location => {
+                                                                            labListPage.itemSelected(null, location);
+                                                                        },
+                                                                        err => console.error(err),
+                                                                        () => console.log(`infowindlow clicked`)
+                                                                    );
 
                                                                 labListPage.mapService.infowindowClicked
                                                                     .subscribe(
@@ -258,6 +270,8 @@ export class LabListPage {
     }
 
     itemSelected(event, location) {
+        console.debug(`LabListPage.itemSelected: ${location.buildingName}`);
+
         if (this.selectedItem === location) {
             this.nav.push(LocationDetailsPage, {
                 location: location,
@@ -271,6 +285,8 @@ export class LabListPage {
     }
 
     itemTapped(event, location) {
+        console.debug(`LabListPage.itemTapped: ${location.buildingName}`);
+
         if (this.selectedItem === location) {
             this.nav.push(LocationDetailsPage, {
                 location: location,

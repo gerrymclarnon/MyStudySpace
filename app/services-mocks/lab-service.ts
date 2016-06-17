@@ -3,6 +3,7 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {Labs} from './mock-labs-data';
 import {Lab} from '../models/lab';
+import {Location} from "../models/location";
 
 @Injectable()
 export class LabService {
@@ -29,7 +30,7 @@ export class LabService {
         return Observable.throw(error.json().error || 'Server error');
     }
 
-    getLabLocations(labs) {
+    getLabLocations(labs):Location[] {
         let destinations = [];
 
         this.initLabDistanceDuration(labs);
@@ -39,19 +40,19 @@ export class LabService {
             if (destinations.length < 25 && lab.latitude !== 0 && lab.longitude !== 0) {
 
                 if (destinations.length === 0) {
-                    destinations.push({
+                    destinations.push(new Location({
                         lat: lab.latitude,
                         lng: lab.longitude,
                         buildingName: lab.buildingName,
                         free: lab.free,
                         campusName: lab.campusName,
-                        labs: [lab]});
+                        labs: [lab]}));
                     lab.destination = 0;
                     console.log("NEW: " + lab.location + " - " + lab.latitude + "," + lab.longitude + "," + lab.destination);
                 } else {
                     let matchFound = false;
                     for (var i = 0; i < destinations.length; i++) {
-                        if (destinations[i].lat === lab.latitude && destinations[i].lng === lab.longitude) {
+                        if (destinations[i].latLng.lat() === lab.latitude && destinations[i].latLng.lng() === lab.longitude) {
                             matchFound = true;
                             lab.destination = i;
                             destinations[i].labs.push(lab);
@@ -62,13 +63,13 @@ export class LabService {
                     }
 
                     if (!matchFound) {
-                        destinations.push({
+                        destinations.push(new Location({
                             lat: lab.latitude,
                             lng: lab.longitude,
                             buildingName: lab.buildingName,
                             free: lab.free,
                             campusName: lab.campusName,
-                            labs: [lab]});
+                            labs: [lab]}));
                         lab.destination = destinations.length - 1;
                         console.log(`(NEW) ${lab.buildingName}  ${lab.buildingRoomName} [${lab.latitude},${lab.longitude}] ${lab.destination}`);
                     }

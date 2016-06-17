@@ -714,6 +714,6 @@ export var Labs:Lab[] =
             free: "8",
             total: "8",
             campusName: "Western General"
-        }        
+        }
     ];
 

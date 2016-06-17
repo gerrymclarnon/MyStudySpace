@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {Platform, ionicBootstrap} from 'ionic-angular';
 
 import {LabListPage} from './pages/lab-list/lab-list';
+import {LocationDetailsPage} from './pages/location-details/location-details';
 //import {LabService} from './services/lab-service';
 import {LocationService} from './services/location-service';
 import {MapService} from './services/map-service';
@@ -26,7 +27,8 @@ export class MyStudySpaceApp {
         });
 
         this.pages = [
-            { title: 'LabListPage', component: LabListPage }
+            { title: 'LabListPage', component: LabListPage },
+            { title: 'LocationDetailsPage', component: LocationDetailsPage }
         ];
     }
 }
