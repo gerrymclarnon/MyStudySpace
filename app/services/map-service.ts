@@ -141,13 +141,23 @@ export class MapService {
                 openInfoWindow.close();
             }
 
+            infoWindow.open(map, marker);
+
             google.maps.event.addListener(infoWindow, 'domready', function () {
-                document.getElementsByClassName("gm-style-iw")[0].addEventListener('click', function () {
+                console.debug("MapService:showLocationOnMap infoWindow listener added");
+
+                let infoWindowContainer = document.getElementsByClassName("gm-style-iw")[0];
+
+                console.debug("MapService:showLocationOnMap infoWindowContainer = " + infoWindowContainer);
+
+                let clickHandler = ('ontouchstart' in document.documentElement ? "touchstart" : "click");
+
+                infoWindowContainer.addEventListener(clickHandler, function () {
+                    console.debug("MapService:showLocationOnMap infoWindow gm-style-iw clicked");
+
                     mapService.infowindowClicked.emit(location);
                 })
             });
-
-            infoWindow.open(map, marker);
 
             if (sendEvent) {
                 mapService.infowindowOpened.emit(location);

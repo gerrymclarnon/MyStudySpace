@@ -15,12 +15,12 @@ import * as moment from 'moment';
 
 
 @Page({
-    templateUrl: 'build/pages/lab-list/lab-list.html',
-    queries: {
-        locationList: new ViewChild('locationList')
-    }
+    templateUrl: 'build/pages/lab-list/lab-list.html'
 })
 export class LabListPage {
+
+    @ViewChild('locationList')
+    locationList:any;
 
     selectedItem:Location;
 
@@ -36,6 +36,8 @@ export class LabListPage {
     private campuses:any;
     private distanceMatrix:any;
     private filteredLabLocations:Location[];
+
+    private navTransitioning:boolean = false;
 
     constructor(private nav:NavController,
                 private navParams:NavParams,
@@ -272,15 +274,36 @@ export class LabListPage {
     itemSelected(event, location) {
         console.debug(`LabListPage.itemSelected: ${location.buildingName}`);
 
-        if (this.selectedItem === location) {
-            this.nav.push(LocationDetailsPage, {
+        if (this.selectedItem === location && !this.navTransitioning) {
+            this.navTransitioning = true;
+
+            let navTransition:Promise<any> = this.nav.push(LocationDetailsPage, {
                 location: location,
                 currentLocation: this.currentLocation,
                 settings: this.settings
             });
+
+            navTransition.then(() => {
+                this.navTransitioning = false;
+            });
         } else {
             this.selectedItem = location;
-            //this.locationList.scrollTo(0, 500, 200);
+
+
+            let listItemPosition:number = 0;
+
+            for (var i = 0; i < this.filteredLabLocations.length; i++) {
+                if (this.filteredLabLocations[i].latLng.lat() == location.latLng.lat()
+                && this.filteredLabLocations[i].latLng.lng() == location.latLng.lng()) {
+                    listItemPosition = i;
+                    break;
+                }
+            }
+
+            let scrollItemHeight = Math.round(this.locationList.getContentDimensions().scrollHeight / this.filteredLabLocations.length);
+            let scrollPosition = (scrollItemHeight * listItemPosition);
+
+            this.locationList.scrollTo(0, scrollPosition, 200);
         }
     }
 
