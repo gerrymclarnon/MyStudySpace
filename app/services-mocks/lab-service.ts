@@ -48,7 +48,7 @@ export class LabService {
                         campusName: lab.campusName,
                         labs: [lab]}));
                     lab.destination = 0;
-                    console.log("NEW: " + lab.location + " - " + lab.latitude + "," + lab.longitude + "," + lab.destination);
+                    console.log(`(NEW) ${lab.buildingName} ${lab.buildingRoomName} [${lab.latitude},${lab.longitude}] ${lab.destination}`);
                 } else {
                     let matchFound = false;
                     for (var i = 0; i < destinations.length; i++) {

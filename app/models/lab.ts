@@ -11,7 +11,7 @@ export class Lab {
     constructor(data:any) {
         if (data) {
             this.buildingName = data.building_name || data.buildingName;
-            this.buildingRoomName = data.building_room_name || data.buildingName;
+            this.buildingRoomName = data.building_room_name || data.buildingRoomName;
             this.longitude = data.longitude;
             this.latitude = data.latitude;
             this.free = data.free;

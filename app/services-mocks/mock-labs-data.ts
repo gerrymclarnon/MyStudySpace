@@ -25,8 +25,8 @@ export var Labs:Lab[] =
         {
             buildingName: "Holland House",
             buildingRoomName: "MicroLab",
-            latitude: 55.9379993,
-            longitude: -3.1718578,
+            latitude: 55.9379993681228900,
+            longitude: -3.171857799999998,
             free: "16",
             total: "32",
             campusName: "Accommodation Services"
@@ -34,8 +34,8 @@ export var Labs:Lab[] =
         {
             buildingName: "Holland House",
             buildingRoomName: "Study Pods",
-            latitude: 55.9379993,
-            longitude: -3.1718578,
+            latitude: 55.9379993681228900,
+            longitude: -3.171857799999998,
             free: "4",
             total: "4",
             campusName: "Accommodation Services"
