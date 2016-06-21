@@ -43,8 +43,15 @@ export class FiltersPage {
         this.viewCtrl.dismiss(data);
     }
 
-    //onPageWillLeave() {
-    //    let selectedCampuses = this.campuses.filter(campus => campus.isChecked).map(campus => campus.name);
-    //    this.events.publish('settings:selectedCampuses', {selectedCampuses: selectedCampuses});
-    //}
+    selectNone() {
+        this.campuses.forEach(campus => {
+            campus['isChecked'] = false;
+        });
+    }
+
+    selectAll() {
+        this.campuses.forEach(campus => {
+            campus['isChecked'] = true;
+        });
+    }
 }
