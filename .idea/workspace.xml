@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27d157b9-82bf-4d25-8c73-085be1295d6b" name="Default" comment="">
+    <list default="true" id="27d157b9-82bf-4d25-8c73-085be1295d6b" name="Default" comment="Fixed map infowindow double click bug.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/pages/lab-list/lab-list.ts" afterPath="$PROJECT_DIR$/app/pages/lab-list/lab-list.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/pages/location-details/location-details.ts" afterPath="$PROJECT_DIR$/app/pages/location-details/location-details.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/map-service.ts" afterPath="$PROJECT_DIR$/app/services/map-service.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="MyStudySpace.iws" />
@@ -1258,7 +1255,7 @@
       <workItem from="1465476097272" duration="30631000" />
       <workItem from="1465826675185" duration="35137000" />
       <workItem from="1466410654252" duration="11178000" />
-      <workItem from="1466496389958" duration="818000" />
+      <workItem from="1466496389958" duration="887000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed initial blank selectedCampuses bug.">
       <created>1460974359939</created>
@@ -1308,17 +1305,24 @@
       <option name="project" value="LOCAL" />
       <updated>1466169280104</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed map infowindow double click bug.">
+      <created>1466497280651</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1466497280651</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="351757000" />
+    <option name="totallyTimeSpent" value="351826000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1695" y="49" width="1450" height="1132" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24261603" sideWeight="0.5077177" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1332,7 +1336,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1386,7 +1389,8 @@
     <MESSAGE value="Replaced ES6 Set/Type stuff with TypeScript safe workaround." />
     <MESSAGE value="Added &quot;Add to Home Screen&quot; ability for iOS." />
     <MESSAGE value="Removed unnecessary bounds.&#10;Improved type safety.&#10;Improved navigation from list item." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unnecessary bounds.&#10;Improved type safety.&#10;Improved navigation from list item." />
+    <MESSAGE value="Fixed map infowindow double click bug." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed map infowindow double click bug." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1453,6 +1457,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3328336">
           <caret line="1773" column="8" selection-start-line="1773" selection-start-column="8" selection-end-line="1773" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1475,6 +1480,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33244327">
           <caret line="440" column="63" selection-start-line="440" selection-start-column="60" selection-end-line="440" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>
