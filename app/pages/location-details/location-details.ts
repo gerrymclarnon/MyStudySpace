@@ -1,8 +1,5 @@
 import {OnInit} from '@angular/core';
 import {Page, NavController, NavParams} from 'ionic-angular';
-import {LocationService} from '../../services/location-service';
-import {MapService} from '../../services/map-service';
-import {LabService} from '../../services-mocks/lab-service';
 import {Location} from '../../models/location';
 import {Settings} from '../../models/settings';
 
@@ -25,14 +22,6 @@ export class LocationDetailsPage {
 
     ngOnInit() {
     }
-
-    //ionViewLoaded() {
-    //    console.log("I'm alive!");
-    //}
-    //
-    //ionViewWillLeave() {
-    //    console.log("Looks like I'm about to leave :(");
-    //}
 
     itemTapped(event:any, location:Location):void {
         let url = 'https://www.google.com/maps/preview?saddr=' + this.currentLocation.latLng.lat() + ',' + this.currentLocation.latLng.lng() + '&daddr=' + location.latLng.lat() + ',' + location.latLng.lng() + '&dirflg=' + this.settings.getDirflg();

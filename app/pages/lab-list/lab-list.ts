@@ -2,8 +2,7 @@ import {OnInit, ViewChild} from '@angular/core';
 import {Page, NavController, NavParams, Modal, Content} from 'ionic-angular';
 import {LocationService} from '../../services/location-service';
 import {MapService} from '../../services/map-service';
-import {LabService} from '../../services-mocks/lab-service';
-//import {LabService} from '../../services/lab-service';
+import {MockLabService} from '../../services-mocks/mock-lab-service';
 import {StorageService} from '../../services/storage-service';
 import {LocationDetailsPage} from '../location-details/location-details';
 import {SettingsPage} from '../settings/settings';
@@ -43,7 +42,7 @@ export class LabListPage {
                 private navParams:NavParams,
                 private locationService:LocationService,
                 private mapService:MapService,
-                private labService:LabService,
+                private labService:MockLabService,
                 private storageService:StorageService) {
         this.nav = nav;
         this.selectedItem = navParams.get('item');

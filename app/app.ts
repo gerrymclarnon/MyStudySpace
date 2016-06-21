@@ -3,17 +3,16 @@ import {Platform, ionicBootstrap} from 'ionic-angular';
 
 import {LabListPage} from './pages/lab-list/lab-list';
 import {LocationDetailsPage} from './pages/location-details/location-details';
-//import {LabService} from './services/lab-service';
 import {LocationService} from './services/location-service';
 import {MapService} from './services/map-service';
-import {LabService} from './services-mocks/lab-service';
+import {MockLabService} from './services-mocks/mock-lab-service';
 import {StorageService} from './services/storage-service';
 
 
 @Component({
     template: '<ion-nav [root]="rootPage"></ion-nav>',
     //config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
-    providers: [LocationService, MapService, LabService, StorageService]
+    providers: [LocationService, MapService, MockLabService, StorageService]
 })
 export class MyStudySpaceApp {
     rootPage: any = LabListPage;

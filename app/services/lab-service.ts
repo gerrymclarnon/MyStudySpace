@@ -1,64 +1,102 @@
 import {Injectable} from '@angular/core';
-import {SERVER_URL} from './config';
-import {Http, Headers, RequestOptions} from '@angular/http';
+import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/Rx';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
-let labsURL = SERVER_URL;
+import {SERVER_URL} from './config';
+import {Lab} from '../models/lab';
+import {Location} from "../models/location";
 
 @Injectable()
 export class LabService {
+    private static MAX_DESTINATIONS:number = 25;
+
+    protected labsURL:string;
 
     constructor (private http:Http) {
         this.http = http;
+        this.labsURL = SERVER_URL;
     }
 
-    // TODO - Create new Lab() for each
-    findAll() {
-        return this.http.get(labsURL)
-            .map(res => res.json())
+    public findAll():Observable<Lab[]> {
+        return this.http.get(this.labsURL)
+            .map(this.extractData)
             .catch(this.handleError);
     }
 
-    handleError(error) {
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+    protected extractData(res:Response) {
+        let json = res.json();
+
+        let labs = [];
+        for (let lab of json) {
+            labs.push(new Lab(lab));
+        }
+
+        return labs;
     }
 
-    getLabLocations(labs) {
-        let destinations = [];
+    protected handleError (error: any) {
+        // In a real world app, we might use a remote logging infrastructure
+        // We'd also dig deeper into the error to get a better message
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+    }
 
-        // Maximum of 25 destinations
+    public getLabLocations(labs:Lab[]):Location[] {
+        let locations = [];
+
         for (let lab of labs) {
-            if (destinations.length < 25 && lab.latitude !== 0 && lab.longitude !== 0) {
 
-                if (destinations.length === 0) {
-                    destinations.push({lat: lab.latitude, lng: lab.longitude});
-                    lab.destination = 0;
-                    console.log("NEW: " + lab.location + " - " + lab.latitude + "," + lab.longitude + "," + lab.destination);
-                } else {
-                    let matchFound = false;
-                    for (var i = 0; i < destinations.length; i++) {
-                        if (destinations[i].lat === lab.latitude && destinations[i].lng === lab.longitude) {
-                            matchFound = true;
-                            lab.destination = i;
-                            console.log(`(DUPLICATE) ${lab.buildingName} ${lab.buildingRoomName} [${lab.latitude},${lab.longitude}] ${lab.destination}`);
-                            break;
-                        }
-                    }
+            if (locations.length < LabService.MAX_DESTINATIONS && lab.latitude !== 0 && lab.longitude !== 0) {
 
-                    if (!matchFound) {
-                        destinations.push({lat: lab.latitude, lng: lab.longitude});
-                        lab.destination = destinations.length - 1;
-                        console.log(`(NEW) ${lab.buildingName}  ${lab.buildingRoomName} [${lab.latitude},${lab.longitude}] ${lab.destination}`);
+                let matchFound = false;
+                for (var i = 0; i < locations.length; i++) {
+                    if (locations[i].latLng.lat() === lab.latitude && locations[i].latLng.lng() === lab.longitude) {
+                        matchFound = true;
+                        locations[i].labs.push(lab);
+                        locations[i].free = String(Number(locations[i].free) + Number(lab.free));
+                        console.log(`(UPDATED) ${lab.buildingName} ${lab.buildingRoomName} [${lab.latitude},${lab.longitude}]`);
+                        break;
                     }
+                }
+
+                if (!matchFound) {
+                    let location = new Location({
+                        lat: lab.latitude,
+                        lng: lab.longitude,
+                        buildingName: lab.buildingName,
+                        free: lab.free,
+                        campusName: lab.campusName,
+                        labs: [lab]
+                    });
+
+                    locations.push(location);
+
+                    console.log(`(NEW) ${lab.buildingName}  ${lab.buildingRoomName} [${lab.latitude},${lab.longitude}]`);
                 }
             }
         }
 
-        console.log(`${destinations.length} unique destinations based on geolocations.`);
+        console.log(`${locations.length} unique destinations based on geolocations.`);
 
-        return destinations;
+        return locations;
     }
 
+    public getCampuses(labs:Lab[]):Array<string> {
+        let labsArray = labs.map(lab => lab.campusName);
+
+        // It would be nice to us this ES6 technique but the combination of Set and Type
+        // isn't supported in the current ES6 shim.
+        //let labsSet = new Set(labsArray);
+        //return [...labsSet];
+
+        let uniqueArray = labsArray.filter(function (item, pos, self) {
+            return self.indexOf(item) == pos;
+        });
+
+        return uniqueArray;
+    }
 }
