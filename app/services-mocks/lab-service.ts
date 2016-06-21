@@ -8,8 +8,7 @@ import {Location} from "../models/location";
 @Injectable()
 export class LabService {
 
-
-    constructor (private http:Http) {
+    constructor(private http:Http) {
         this.http = http;
     }
 
@@ -30,59 +29,47 @@ export class LabService {
         return Observable.throw(error.json().error || 'Server error');
     }
 
-    getLabLocations(labs):Location[] {
-        let destinations = [];
-
-        this.initLabDistanceDuration(labs);
+    getLabLocations(labs:Lab[]):Location[] {
+        let locations = [];
 
         // Maximum of 25 destinations
         for (let lab of labs) {
-            if (destinations.length < 25 && lab.latitude !== 0 && lab.longitude !== 0) {
+            if (locations.length < 25 && lab.latitude !== 0 && lab.longitude !== 0) {
 
-                if (destinations.length === 0) {
-                    destinations.push(new Location({
+                let matchFound = false;
+                for (var i = 0; i < locations.length; i++) {
+                    if (locations[i].latLng.lat() === lab.latitude && locations[i].latLng.lng() === lab.longitude) {
+                        matchFound = true;
+                        locations[i].labs.push(lab);
+                        locations[i].free = String(Number(locations[i].free) + Number(lab.free));
+                        console.log(`(UPDATED) ${lab.buildingName} ${lab.buildingRoomName} [${lab.latitude},${lab.longitude}]`);
+                        break;
+                    }
+                }
+
+                if (!matchFound) {
+                    let location = new Location({
                         lat: lab.latitude,
                         lng: lab.longitude,
                         buildingName: lab.buildingName,
                         free: lab.free,
                         campusName: lab.campusName,
-                        labs: [lab]}));
-                    lab.destination = 0;
-                    console.log(`(NEW) ${lab.buildingName} ${lab.buildingRoomName} [${lab.latitude},${lab.longitude}] ${lab.destination}`);
-                } else {
-                    let matchFound = false;
-                    for (var i = 0; i < destinations.length; i++) {
-                        if (destinations[i].latLng.lat() === lab.latitude && destinations[i].latLng.lng() === lab.longitude) {
-                            matchFound = true;
-                            lab.destination = i;
-                            destinations[i].labs.push(lab);
-                            destinations[i].free = String(Number(destinations[i].free) + Number(lab.free));
-                            console.log(`(ADDED) ${lab.buildingName} ${lab.buildingRoomName} [${lab.latitude},${lab.longitude}] ${lab.destination}`);
-                            break;
-                        }
-                    }
+                        labs: [lab]
+                    });
 
-                    if (!matchFound) {
-                        destinations.push(new Location({
-                            lat: lab.latitude,
-                            lng: lab.longitude,
-                            buildingName: lab.buildingName,
-                            free: lab.free,
-                            campusName: lab.campusName,
-                            labs: [lab]}));
-                        lab.destination = destinations.length - 1;
-                        console.log(`(NEW) ${lab.buildingName}  ${lab.buildingRoomName} [${lab.latitude},${lab.longitude}] ${lab.destination}`);
-                    }
+                    locations.push(location);
+
+                    console.log(`(NEW) ${lab.buildingName}  ${lab.buildingRoomName} [${lab.latitude},${lab.longitude}]`);
                 }
             }
         }
 
-        console.log(`${destinations.length} unique destinations based on geolocations.`);
+        console.log(`${locations.length} unique destinations based on geolocations.`);
 
-        return destinations;
+        return locations;
     }
 
-    getCampuses(labs):Array<string> {
+    getCampuses(labs:Lab[]):Array<string> {
         let labsArray = labs.map(lab => lab.campusName);
 
         // It would be nice to us this ES6 technique but the combination of Set and Type
@@ -90,18 +77,10 @@ export class LabService {
         //let labsSet = new Set(labsArray);
         //return [...labsSet];
 
-        let uniqueArray = labsArray.filter(function(item, pos, self) {
+        let uniqueArray = labsArray.filter(function (item, pos, self) {
             return self.indexOf(item) == pos;
         });
 
         return uniqueArray;
     }
-
-    initLabDistanceDuration(labs) {
-        for (let lab of labs) {
-            lab.distance = "...";
-            lab.duration = "...";
-        }
-    }
-
 }
