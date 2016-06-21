@@ -68,10 +68,10 @@
       <file leaf-file-name="lab-service.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/services-mocks/lab-service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.89403975">
-              <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.69536424">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding>
-                <marker date="1466502705000" expanded="true" signature="2376:2820" placeholder="..." />
+                <marker date="1466503238000" expanded="true" signature="2413:2857" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -595,21 +595,22 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="963" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="js.last.introduce.type" value="CONST" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/www" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app/pages" />
-      <recent name="$PROJECT_DIR$/app/models" />
-      <recent name="$PROJECT_DIR$/app" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/tests" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/tests/services" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/services/tests" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/www" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/pages" />
+      <recent name="$PROJECT_DIR$/app/models" />
+      <recent name="$PROJECT_DIR$/app" />
     </key>
   </component>
   <component name="RunManager">
@@ -1254,7 +1255,7 @@
       <workItem from="1465476097272" duration="30631000" />
       <workItem from="1465826675185" duration="35137000" />
       <workItem from="1466410654252" duration="11178000" />
-      <workItem from="1466496389958" duration="6049000" />
+      <workItem from="1466496389958" duration="6549000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed initial blank selectedCampuses bug.">
       <created>1460974359939</created>
@@ -1328,11 +1329,17 @@
       <option name="project" value="LOCAL" />
       <updated>1466501865676</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Refactored to remove unnecessary properties (thanks to TypeScript) and duplicate code.">
+      <created>1466502845147</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1466502845147</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356988000" />
+    <option name="totallyTimeSpent" value="357488000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1695" y="49" width="1450" height="1132" extended-state="0" />
@@ -1348,7 +1355,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22781065" sideWeight="0.49228224" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3458807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3458807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47140038" sideWeight="0.49353796" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1410,7 +1417,8 @@
     <MESSAGE value="Upgraded ionic-angular version." />
     <MESSAGE value="Re-instated the filters page." />
     <MESSAGE value="Fixed duplicate Holland House (due to lack of accuracy in longitude in mock data) bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed duplicate Holland House (due to lack of accuracy in longitude in mock data) bug" />
+    <MESSAGE value="Refactored to remove unnecessary properties (thanks to TypeScript) and duplicate code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored to remove unnecessary properties (thanks to TypeScript) and duplicate code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1744,10 +1752,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/services-mocks/lab-service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.89403975">
-          <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.69536424">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding>
-            <marker date="1466502705000" expanded="true" signature="2376:2820" placeholder="..." />
+            <marker date="1466503238000" expanded="true" signature="2413:2857" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -7,6 +7,7 @@ import {Location} from "../models/location";
 
 @Injectable()
 export class LabService {
+    private static MAX_DESTINATIONS:number = 25;
 
     constructor(private http:Http) {
         this.http = http;
@@ -32,9 +33,9 @@ export class LabService {
     getLabLocations(labs:Lab[]):Location[] {
         let locations = [];
 
-        // Maximum of 25 destinations
         for (let lab of labs) {
-            if (locations.length < 25 && lab.latitude !== 0 && lab.longitude !== 0) {
+
+            if (locations.length < LabService.MAX_DESTINATIONS && lab.latitude !== 0 && lab.longitude !== 0) {
 
                 let matchFound = false;
                 for (var i = 0; i < locations.length; i++) {
