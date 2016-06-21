@@ -6,6 +6,8 @@ export class Location {
     free:string;
     campusName:string;
     latLng:google.maps.LatLng;
+    duration:string;
+    durationValue:number;
     labs:Lab[];
 
     constructor(data) {
@@ -19,7 +21,7 @@ export class Location {
         }
     }
 
-    toString() {
+    public toString():string {
         return JSON.stringify(this);
     }
 }

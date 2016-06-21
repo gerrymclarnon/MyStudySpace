@@ -4,10 +4,6 @@ import {Location} from '../models/location';
 @Injectable()
 export class LocationService {
 
-    static get parameters() {
-        return [];
-    }
-
     constructor() {
     }
 

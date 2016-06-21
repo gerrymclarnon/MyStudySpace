@@ -72,7 +72,7 @@ export class LabListPage {
         this.getLabPcAvailabilityAndDistance(null);
     }
 
-    getLabPcAvailabilityAndDistance(refresher) {
+    private getLabPcAvailabilityAndDistance(refresher) {
 
         let labListPage = this;
         labListPage.lastUpdated = null;
@@ -146,7 +146,7 @@ export class LabListPage {
                                                                             labListPage.itemSelected(null, location);
                                                                         },
                                                                         err => console.error(err),
-                                                                        () => console.log(`infowindlow clicked`)
+                                                                        () => console.log(`infoWindow clicked`)
                                                                     );
 
                                                                 labListPage.mapComponent.infoWindowClicked
@@ -155,7 +155,7 @@ export class LabListPage {
                                                                             labListPage.itemSelected(null, location);
                                                                         },
                                                                         err => console.error(err),
-                                                                        () => console.log(`infowindlow clicked`)
+                                                                        () => console.log(`infoWindow clicked`)
                                                                     );
 
                                                                 if (refresher) {
@@ -176,7 +176,7 @@ export class LabListPage {
                 });
     }
 
-    getSettings(data) {
+    private getSettings(data) {
         let settings = null;
         try {
             settings = new Settings(data);
@@ -187,7 +187,7 @@ export class LabListPage {
         return settings;
     }
 
-    getFilters(data) {
+    private getFilters(data) {
         let filters = null;
         try {
             filters = new Filters(data);
@@ -198,7 +198,7 @@ export class LabListPage {
         return filters;
     }
 
-    filterResults(data) {
+    private filterResults(data) {
         let labList = this;
 
         if (labList.filters.selectedCampuses.length === 0) {
@@ -209,7 +209,7 @@ export class LabListPage {
         return data.filter(lab => labList.filters.selectedCampuses.indexOf(lab.campusName) !== -1);
     }
 
-    updateLabLocationDistances(labLocations, distanceMatrix) {
+    private updateLabLocationDistances(labLocations:Location[], distanceMatrix) {
         var originList = distanceMatrix.originAddresses;
 
         for (var i = 0; i < originList.length; i++) {
@@ -224,7 +224,7 @@ export class LabListPage {
         }
     }
 
-    sortResults(labLocations) {
+    private sortResults(labLocations) {
         if (labLocations === undefined) {
             return labLocations;
         } else {
@@ -246,7 +246,7 @@ export class LabListPage {
         }
     }
 
-    handleLocationServiceError(error) {
+    private handleLocationServiceError(error) {
         let errorMessage = '';
         switch (error.code) {
             case error.PERMISSION_DENIED:
@@ -267,17 +267,17 @@ export class LabListPage {
         console.error('ERROR(' + error.code + '): ' + error.message + ' - ' + errorMessage);
     }
 
-    updateLastUpdated(moment) {
+    private updateLastUpdated(moment) {
         this.lastUpdated = moment;
         this.lastUpdatedFromNowText = this.getLastUpdatedFromNowText(this.lastUpdated);
         console.log(`Updated ${this.lastUpdatedFromNowText}`);
     }
 
-    getLastUpdatedFromNowText(moment) {
+    private getLastUpdatedFromNowText(moment) {
         return moment ? moment.fromNow() : '';
     }
 
-    itemSelected(event, location) {
+    private itemSelected(event, location) {
         console.debug(`LabListPage.itemSelected: ${location.buildingName}`);
 
         if (this.selectedItem === location && !this.navTransitioning) {
@@ -313,7 +313,7 @@ export class LabListPage {
         }
     }
 
-    itemTapped(event, location) {
+    private itemTapped(event, location) {
         console.debug(`LabListPage.itemTapped: ${location.buildingName}`);
 
         if (this.selectedItem === location) {
@@ -328,19 +328,19 @@ export class LabListPage {
         }
     }
 
-    doRefresh(refresher) {
+    private doRefresh(refresher) {
         this.getLabPcAvailabilityAndDistance(refresher);
     }
 
-    doStart(refresher) {
+    private doStart(refresher) {
         console.log('Doing Start', refresher);
     }
 
-    doPulling(refresher) {
+    private doPulling(refresher) {
         console.log('Pulling', refresher);
     }
 
-    showSettingsPage() {
+    private showSettingsPage() {
         let labListPage = this;
 
         let modal = Modal.create(SettingsPage, {
@@ -359,7 +359,7 @@ export class LabListPage {
     }
 
 
-    showFiltersPage() {
+    private showFiltersPage() {
         let labListPage = this;
 
         let modal = Modal.create(FiltersPage, {

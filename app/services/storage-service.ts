@@ -9,5 +9,4 @@ export class StorageService {
     constructor() {
         this.storage = new Storage(SqlStorage);
     }
-
 }

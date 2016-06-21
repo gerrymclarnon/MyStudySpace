@@ -22,19 +22,19 @@ export class SettingsPage {
         this.selectedUnitSystems = [this.navParams.data.settings.selectedUnitSystems];
     }
 
-    resetFilters():void {
+    private resetFilters():void {
         this.selectedTravelModes = [DEFAULT_TRAVEL_MODE];
         this.selectedUnitSystems = [DEFAULT_UNIT_SYSTEM];
     }
 
-    applyFilters():void {
+    private applyFilters():void {
         this.dismiss({
             selectedTravelModes: this.selectedTravelModes,
             selectedUnitSystems: this.selectedUnitSystems
         });
     }
 
-    dismiss(data:any):void {
+    private dismiss(data:any):void {
         this.storageService.storage.set('settings', JSON.stringify(data));
         this.viewCtrl.dismiss(data);
     }

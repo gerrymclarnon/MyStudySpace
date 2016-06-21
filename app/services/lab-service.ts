@@ -25,7 +25,7 @@ export class LabService {
             .catch(this.handleError);
     }
 
-    protected extractData(res:Response) {
+    protected extractData(res:Response):Lab[] {
         let json = res.json();
 
         let labs = [];
@@ -36,7 +36,7 @@ export class LabService {
         return labs;
     }
 
-    protected handleError (error: any) {
+    protected handleError(error:any) {
         // In a real world app, we might use a remote logging infrastructure
         // We'd also dig deeper into the error to get a better message
         let errMsg = (error.message) ? error.message :

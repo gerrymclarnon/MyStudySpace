@@ -30,7 +30,7 @@ export class FiltersPage {
         });
     }
 
-    applyFilters() {
+    private applyFilters():void {
         let selectedCampuses = this.campuses.filter(campus => campus.isChecked).map(campus => campus.name);
 
         this.dismiss({
@@ -38,18 +38,18 @@ export class FiltersPage {
         });
     }
 
-    dismiss(data) {
+    private dismiss(data:any) {
         this.storageService.storage.set('filters', JSON.stringify(data));
         this.viewCtrl.dismiss(data);
     }
 
-    selectNone() {
+    private selectNone():void {
         this.campuses.forEach(campus => {
             campus['isChecked'] = false;
         });
     }
 
-    selectAll() {
+    private selectAll():void {
         this.campuses.forEach(campus => {
             campus['isChecked'] = true;
         });

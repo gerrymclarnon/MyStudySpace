@@ -26,7 +26,7 @@ export class Settings {
         }
     }
 
-    getDirflg() {
+    public getDirflg():string {
         let dirflg = '';
 
         switch(this.selectedTravelModes) {
@@ -49,7 +49,7 @@ export class Settings {
         return dirflg;
     }
 
-    toString() {
+    public toString():string {
         return JSON.stringify(this);
     }
 }

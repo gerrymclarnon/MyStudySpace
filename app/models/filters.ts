@@ -12,11 +12,11 @@ export class Filters {
         }
     }
 
-    toString() {
+    public toString():string {
         return JSON.stringify(this);
     }
 
-    setSelectedCampuses(selectedCampuses) {
+    public setSelectedCampuses(selectedCampuses) {
         this.selectedCampuses = selectedCampuses;
     }
 }

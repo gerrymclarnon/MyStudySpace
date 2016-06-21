@@ -1,8 +1,8 @@
 import {OnInit} from '@angular/core';
 import {Page, NavController, NavParams} from 'ionic-angular';
+
 import {Location} from '../../models/location';
 import {Settings} from '../../models/settings';
-
 
 @Page({
     templateUrl: 'build/pages/location-details/location-details.html'
