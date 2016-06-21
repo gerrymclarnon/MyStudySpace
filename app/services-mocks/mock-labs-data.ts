@@ -19,6 +19,8 @@ Book.ed                                     LabMonitor
  sundayOpen: null,
  sundayClosed: null
  */
+
+//DEPRECATED
 import {Lab} from "../models/lab";
 export var Labs:Lab[] =
     [
