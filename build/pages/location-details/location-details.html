@@ -1,0 +1,68 @@
+<ion-navbar *navbar primary>
+    <ion-title></ion-title>
+</ion-navbar>
+
+<ion-content>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 text-center>{{ location.buildingName | slice:0:25 }}{{ location.buildingName.length > 25 ?
+                '...' : '' }}</h1>
+            <p text-center>{{ location.distance }}</p>
+            <p text-center>{{ location.free }} computers free</p>
+        </div>
+    </div>
+
+    <ion-list>
+        <ion-item class="lab-list-label lab-list-item">
+            <button ion-item (click)="itemTapped($event, location)"
+                    class="lab-list-label">
+                <ion-row class="lab-list-item-row">
+                    <ion-col width-30 text-left>
+                        <h2>Directions</h2>
+                    </ion-col>
+                    <ion-col width-50 text-right>
+                        <h2>{{ location.duration }}</h2>
+                    </ion-col>
+                    <ion-col width-10 *ngIf="settings.selectedTravelModes === 'BICYCLING'">
+                        <ion-icon name="bicycle"></ion-icon>
+                    </ion-col>
+                    <ion-col width-10 *ngIf="settings.selectedTravelModes === 'DRIVING'">
+                        <ion-icon name="car"></ion-icon>
+                    </ion-col>
+                    <ion-col width-10 *ngIf="settings.selectedTravelModes === 'TRANSIT'">
+                        <ion-icon name="train"></ion-icon>
+                    </ion-col>
+                    <ion-col width-10 *ngIf="settings.selectedTravelModes === 'WALKING'">
+                        <ion-icon name="walk"></ion-icon>
+                    </ion-col>
+                    <ion-col width-10>
+                        <ion-icon name="arrow-forward"></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </button>
+        </ion-item>
+    </ion-list>
+
+
+    <ion-list>
+
+        <ion-list-header>
+            Free Computers
+        </ion-list-header>
+
+        <ion-item *ngFor="let lab of location.labs" class="lab-list-item lab-list-label">
+            <ion-row class="lab-list-item-row">
+                <ion-col width-20 text-left>
+                    <h2>{{lab.free}} free</h2>
+                </ion-col>
+                <ion-col width-80 text-left>
+                    <h2>{{ lab.buildingRoomName | slice:0:25 }}{{ lab.buildingRoomName.length > 25 ? '...' : ''
+                        }} ∙
+                        <small>{{ lab.total }} Total</small>
+                    </h2>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-list>
+</ion-content>
+

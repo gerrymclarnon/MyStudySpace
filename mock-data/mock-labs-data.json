@@ -1,0 +1,695 @@
+[
+  {
+    "building_name": "Holland House",
+    "building_room_name": "MicroLab",
+    "latitude": 55.9379993681228900,
+    "longitude": -3.171857799999998,
+    "free": "16",
+    "seats": "32",
+    "group": "Accommodation Services"
+  },
+  {
+    "building_name": "Holland House",
+    "building_room_name": "Study Pods",
+    "latitude": 55.9379993681228900,
+    "longitude": -3.171857799999998,
+    "free": "4",
+    "seats": "4",
+    "group": "Accommodation Services"
+  },
+  {
+    "building_name": "Business School",
+    "building_room_name": "HUB RC",
+    "latitude": 55.9431078681228900,
+    "longitude": -3.1873118877410890,
+    "free": "3",
+    "seats": "19",
+    "group": "Business School"
+  },
+  {
+    "building_name": "Business School",
+    "building_room_name": "MBA Suite",
+    "latitude": 55.9431078681228900,
+    "longitude": -3.1873118877410890,
+    "free": "13",
+    "seats": "13",
+    "group": "Business School"
+  },
+  {
+    "building_name": "Business School",
+    "building_room_name": "Synd Rooms",
+    "latitude": 55.9431078681228900,
+    "longitude": -3.1873118877410890,
+    "free": "16",
+    "seats": "18",
+    "group": "Business School"
+  },
+  {
+    "building_name": "Business School",
+    "building_room_name": "Teach Lab",
+    "latitude": 55.9431078681228900,
+    "longitude": -3.1873118877410890,
+    "free": "39",
+    "seats": "41",
+    "group": "Business School"
+  },
+  {
+    "building_name": "Business School",
+    "building_room_name": "Teach Lab 2",
+    "latitude": 55.9431078681228900,
+    "longitude": -3.1873118877410890,
+    "free": "18",
+    "seats": "21",
+    "group": "Business School"
+  },
+  {
+    "building_name": "Business School",
+    "building_room_name": "UG Lab",
+    "latitude": 55.9431078681228900,
+    "longitude": -3.1873118877410890,
+    "free": "18",
+    "seats": "19",
+    "group": "Business School"
+  },
+  {
+    "building_name": "Alison House",
+    "building_room_name": "TBD",
+    "latitude": 55.9431078681228900,
+    "longitude": -3.1873118877410890,
+    "free": "15",
+    "seats": "18",
+    "group": "Central"
+  },
+  {
+    "building_name": "Appleton Tower",
+    "building_room_name": "Level 1 (Mezzanine)",
+    "longitude": -3.1870651245117188,
+    "latitude": 55.9444416917442200,
+    "free": "6",
+    "seats": "16",
+    "group": "Central"
+  },
+  {
+    "building_name": "Appleton Tower",
+    "building_room_name": "Foyer (Central Cafe)",
+    "longitude": -3.1870651245117188,
+    "latitude": 55.9444416917442200,
+    "free": "11",
+    "seats": "30",
+    "group": "Central"
+  },
+  {
+    "building_name": "Main Library",
+    "building_room_name": "Cafe",
+    "longitude": -3.1888461112976074,
+    "latitude": 55.9426872835810500,
+    "free": "13",
+    "seats": "28",
+    "group": "Central"
+  },
+  {
+    "building_name": "Teviot House",
+    "building_room_name": "Cafe",
+    "longitude": -3.1889533996582030,
+    "latitude": 55.9449583858474800,
+    "free": "5",
+    "seats": "6",
+    "group": "Central"
+  },
+  {
+    "building_name": "Hugh Robson",
+    "building_room_name": "Basement A",
+    "longitude": -3.1899189949035645,
+    "latitude": 55.9442794724061900,
+    "free": "40",
+    "seats": "65",
+    "group": "Central"
+  },
+  {
+    "building_name": "Hugh Robson",
+    "building_room_name": "Basement B",
+    "longitude": -3.1899189949035645,
+    "latitude": 55.9442794724061900,
+    "free": "76",
+    "seats": "139",
+    "group": "Central"
+  },
+  {
+    "building_name": "Main Library",
+    "building_room_name": "Quick Use",
+    "longitude": -3.1888461112976074,
+    "latitude": 55.9426872835810500,
+    "free": "2",
+    "seats": "30",
+    "group": "Central"
+  },
+  {
+    "building_name": "Main Library",
+    "building_room_name": "Cafe",
+    "longitude": -3.1888461112976074,
+    "latitude": 55.9426872835810500,
+    "free": "4",
+    "seats": "14",
+    "group": "Central"
+  },
+  {
+    "building_name": "Main Library",
+    "building_room_name": "Level 1",
+    "longitude": -3.1888461112976074,
+    "latitude": 55.9426872835810500,
+    "free": "5",
+    "seats": "84",
+    "group": "Central"
+  },
+  {
+    "building_name": "Main Library",
+    "building_room_name": "Level 2",
+    "longitude": -3.1888461112976074,
+    "latitude": 55.9426872835810500,
+    "free": "13",
+    "seats": "156",
+    "group": "Central"
+  },
+  {
+    "building_name": "Main Library",
+    "building_room_name": "Level 3",
+    "longitude": -3.1888461112976074,
+    "latitude": 55.9426872835810500,
+    "free": "34",
+    "seats": "82",
+    "group": "Central"
+  },
+  {
+    "building_name": "Main Library",
+    "building_room_name": "Level 4",
+    "longitude": -3.1888461112976074,
+    "latitude": 55.9426872835810500,
+    "free": "57",
+    "seats": "152",
+    "group": "Central"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "EBVC Room F33 (VET3)",
+    "longitude": -3.2010340690612793,
+    "latitude": 55.8658360390777300,
+    "free": "6",
+    "seats": "7",
+    "group": "Easter Bush"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "EBVC Room G02 (VG02)",
+    "longitude": -3.2010340690612793,
+    "latitude": 55.8658360390777300,
+    "free": "35",
+    "seats": "36",
+    "group": "Easter Bush"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "EBVC Room G03 (VG03)",
+    "longitude": -3.2010340690612793,
+    "latitude": 55.8658360390777300,
+    "free": "10",
+    "seats": "10",
+    "group": "Easter Bush"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "EBVC Study Landscape (V129)",
+    "longitude": -3.2010340690612793,
+    "latitude": 55.8658360390777300,
+    "free": "23",
+    "seats": "24",
+    "group": "Easter Bush"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "EBVC Teaching Lab 1 (VET1)",
+    "longitude": -3.2010340690612793,
+    "latitude": 55.8658360390777300,
+    "free": "27",
+    "seats": "27",
+    "group": "Easter Bush"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "EBVC Teaching Lab 2 (VET2)",
+    "longitude": -3.2010340690612793,
+    "latitude": 55.8658360390777300,
+    "free": "38",
+    "seats": "38",
+    "group": "Easter Bush"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "Vet RDVS",
+    "longitude": -3.2010340690612793,
+    "latitude": 55.8658360390777300,
+    "free": "0",
+    "seats": "32",
+    "group": "Easter Bush"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "VET VETE (VETE)",
+    "longitude": -3.2010340690612793,
+    "latitude": 55.8658360390777300,
+    "free": "3",
+    "seats": "3",
+    "group": "Easter Bush"
+  },
+  {
+    "building_name": "Alison House",
+    "building_room_name": "TBD",
+    "longitude": -3.1863999366760254,
+    "latitude": 55.9461119105979900,
+    "free": "15",
+    "seats": "18",
+    "group": "ECA Alison House"
+  },
+  {
+    "building_name": "Alison House",
+    "building_room_name": "1.08",
+    "longitude": -3.1863999366760254,
+    "latitude": 55.9461119105979900,
+    "free": "9",
+    "seats": "10",
+    "group": "ECA Alison House"
+  },
+  {
+    "building_name": "Alison House",
+    "building_room_name": "1.17",
+    "longitude": -3.1863999366760254,
+    "latitude": 55.9461119105979900,
+    "free": "4",
+    "seats": "6",
+    "group": "ECA Alison House"
+  },
+  {
+    "building_name": "Alison House",
+    "building_room_name": "Atrium",
+    "longitude": -3.1863999366760254,
+    "latitude": 55.9461119105979900,
+    "free": "22",
+    "seats": "24",
+    "group": "ECA Alison House"
+  },
+  {
+    "building_name": "Alison House",
+    "building_room_name": "G04",
+    "longitude": -3.1863999366760254,
+    "latitude": 55.9461119105979900,
+    "free": "6",
+    "seats": "6",
+    "group": "ECA Alison House"
+  },
+  {
+    "building_name": "Alison House",
+    "building_room_name": "TBD",
+    "longitude": -3.1863999366760254,
+    "latitude": 55.9461119105979900,
+    "free": "15",
+    "seats": "18",
+    "group": "ECA Central"
+  },
+  {
+    "building_name": "Alison House",
+    "building_room_name": "Atrium",
+    "longitude": -3.1863999366760254,
+    "latitude": 55.9461119105979900,
+    "free": "22",
+    "seats": "24",
+    "group": "ECA Central"
+  },
+  {
+    "building_name": "Evolution",
+    "building_room_name": "2.14",
+    "longitude": -3.2005995512008667,
+    "latitude": 55.9460736605762700,
+    "free": "10",
+    "seats": "19",
+    "group": "ECA Central"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "P7",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "14",
+    "seats": "16",
+    "group": "ECA Central"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "Q15",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "11",
+    "seats": "14",
+    "group": "ECA Central"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "Q18",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "17",
+    "seats": "19",
+    "group": "ECA Central"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "Q2",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "5",
+    "seats": "10",
+    "group": "ECA Central"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "Q3",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "7",
+    "seats": "21",
+    "group": "ECA Central"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "Q4",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "7",
+    "seats": "16",
+    "group": "ECA Central"
+  },
+  {
+    "building_name": "Minto House",
+    "building_room_name": "IT Studio",
+    "longitude": -3.1890824587026145,
+    "latitude": 55.9477839098566900,
+    "free": "7",
+    "seats": "45",
+    "group": "ECA Central"
+  },
+  {
+    "building_name": "Evolution",
+    "building_room_name": "2.14",
+    "longitude": -3.2005995512008667,
+    "latitude": 55.9460736605762700,
+    "free": "10",
+    "seats": "19",
+    "group": "ECA Evolution House"
+  },
+  {
+    "building_name": "Evolution",
+    "building_room_name": "5.09",
+    "longitude": -3.2005995512008667,
+    "latitude": 55.9460736605762700,
+    "free": "6",
+    "seats": "8",
+    "group": "ECA Evolution House"
+  },
+  {
+    "building_name": "Evolution",
+    "building_room_name": "Graphics Design Lab",
+    "longitude": -3.2005995512008667,
+    "latitude": 55.9460736605762700,
+    "free": "4",
+    "seats": "4",
+    "group": "ECA Evolution House"
+  },
+  {
+    "building_name": "Evolution",
+    "building_room_name": "Illustration Lab",
+    "longitude": -3.2005995512008667,
+    "latitude": 55.9460736605762700,
+    "free": "2",
+    "seats": "5",
+    "group": "ECA Evolution House"
+  },
+  {
+    "building_name": "Evolution",
+    "building_room_name": "Product Design Lab",
+    "longitude": -3.2005995512008667,
+    "latitude": 55.9460736605762700,
+    "free": "2",
+    "seats": "4",
+    "group": "ECA Evolution House"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "P7",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "14",
+    "seats": "16",
+    "group": "ECA Hunter Building"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "Q15",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "11",
+    "seats": "14",
+    "group": "ECA Hunter Building"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "Q18",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "17",
+    "seats": "19",
+    "group": "ECA Hunter Building"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "Q2",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "5",
+    "seats": "10",
+    "group": "ECA Hunter Building"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "Q3",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "7",
+    "seats": "21",
+    "group": "ECA Hunter Building"
+  },
+  {
+    "building_name": "Hunter Building",
+    "building_room_name": "Q4",
+    "longitude": -3.1980729103088380,
+    "latitude": 55.9451282124570850,
+    "free": "7",
+    "seats": "16",
+    "group": "ECA Hunter Building"
+  },
+  {
+    "building_name": "High School Yards",
+    "building_room_name": "Lab",
+    "longitude": -3.1840935499349143,
+    "latitude": 55.9486009337296800,
+    "free": "18",
+    "seats": "61",
+    "group": "Holyrood and High School Yards"
+  },
+  {
+    "building_name": "Moray House",
+    "building_room_name": "Ground Floor",
+    "longitude": -3.1840935499349143,
+    "latitude": 55.9486009337296800,
+    "free": "19",
+    "seats": "32",
+    "group": "Holyrood and High School Yards"
+  },
+  {
+    "building_name": "Moray House",
+    "building_room_name": "Library Level 1",
+    "longitude": -3.1840935499349143,
+    "latitude": 55.9486009337296800,
+    "free": "11",
+    "seats": "27",
+    "group": "Holyrood and High School Yards"
+  },
+  {
+    "building_name": "JCMB",
+    "building_room_name": "Cafe",
+    "longitude": -3.1748771667480470,
+    "latitude": 55.9235759115671200,
+    "free": "18",
+    "seats": "25",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "Murray Library Ground",
+    "building_room_name": "Cafe",
+    "longitude": -3.1748771667480470,
+    "latitude": 55.9235759115671200,
+    "free": "6",
+    "seats": "8",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "JCMB",
+    "building_room_name": "L and T Cluster",
+    "longitude": -3.1748771667480470,
+    "latitude": 55.9235759115671200,
+    "free": "20",
+    "seats": "42",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "JCMB",
+    "building_room_name": "L and T Cluster",
+    "longitude": -3.1748771667480470,
+    "latitude": 55.9235759115671200,
+    "free": "3",
+    "seats": "5",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "KB Centre",
+    "building_room_name": "Level 2 - Side 20 Seat",
+    "longitude": -3.1748771667480470,
+    "latitude": 55.9235759115671200,
+    "free": "11",
+    "seats": "20",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "KB Centre",
+    "building_room_name": "Level 2 - Side 25 Seat",
+    "longitude": -3.1748771667480470,
+    "latitude": 55.9235759115671200,
+    "free": "14",
+    "seats": "25",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "KB Centre",
+    "building_room_name": "Level 3",
+    "longitude": -3.1748771667480470,
+    "latitude": 55.9235759115671200,
+    "free": "65",
+    "seats": "98",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "Mary Bruck",
+    "building_room_name": "Ground Floor",
+    "longitude": -3.1730116009930500,
+    "latitude": 55.9231925860886040,
+    "free": "0",
+    "seats": "12",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "Mary Bruck",
+    "building_room_name": "Level 1",
+    "longitude": -3.1730116009930500,
+    "latitude": 55.9231925860886040,
+    "free": "26",
+    "seats": "60",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "Murray Library",
+    "building_room_name": "Level 1",
+    "longitude": -3.1750380992889404,
+    "latitude": 55.9229507263602100,
+    "free": "4",
+    "seats": "13",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "Murray Library",
+    "building_room_name": "Level 1 - Quick Use",
+    "longitude": -3.1750380992889404,
+    "latitude": 55.9229507263602100,
+    "free": "8",
+    "seats": "8",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "Murray Library",
+    "building_room_name": "Level 2",
+    "longitude": -3.1750380992889404,
+    "latitude": 55.9229507263602100,
+    "free": "3",
+    "seats": "11",
+    "group": "KB Labs"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "CB Library (LFLL)",
+    "longitude": -3.1368756294250490,
+    "latitude": 55.9220181396980500,
+    "free": "37",
+    "seats": "47",
+    "group": "Little France"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "CB Microlab 1 (LFLN)",
+    "longitude": -3.1368756294250490,
+    "latitude": 55.9220181396980500,
+    "free": "18",
+    "seats": "18",
+    "group": "Little France"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "CB Microlab 2 (LFLP)",
+    "longitude": -3.1368756294250490,
+    "latitude": 55.9220181396980500,
+    "free": "14",
+    "seats": "14",
+    "group": "Little France"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "CB Microlab 4 (LFLM)",
+    "longitude": -3.1368756294250490,
+    "latitude": 55.9220181396980500,
+    "free": "3",
+    "seats": "4",
+    "group": "Little France"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "WGH MEC Lab 1 (WGHA)",
+    "longitude": -3.2348728179931640,
+    "latitude": 55.9620294457321560,
+    "free": "17",
+    "seats": "24",
+    "group": "Western General"
+  },
+  {
+    "building_name": "MVM",
+    "building_room_name": "WGH MEC Lab 2 (WGHB)",
+    "longitude": -3.2348728179931640,
+    "latitude": 55.9620294457321560,
+    "free": "15",
+    "seats": "18",
+    "group": "Western General"
+  },
+  {
+    "building_name": "Western General",
+    "building_room_name": "Library",
+    "longitude": -3.2348728179931640,
+    "latitude": 55.9620294457321560,
+    "free": "8",
+    "seats": "8",
+    "group": "Western General"
+  }
+]
