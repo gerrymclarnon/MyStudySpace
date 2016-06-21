@@ -1,5 +1,8 @@
 import {OnInit, ViewChild} from '@angular/core';
 import {Page, NavController, NavParams, Modal, Content} from 'ionic-angular';
+
+import * as moment from 'moment';
+
 import {LocationService} from '../../services/location-service';
 import {MapService} from '../../services/map-service';
 import {MockLabService} from '../../services-mocks/mock-lab-service';
@@ -10,13 +13,17 @@ import {FiltersPage} from '../filters/filters';
 import {Settings} from '../../models/settings';
 import {Filters} from '../../models/filters';
 import {Location} from '../../models/location';
-import * as moment from 'moment';
-
+import {Lab} from "../../models/lab";
+import {MapComponent} from "../../components/map/map.component";
 
 @Page({
-    templateUrl: 'build/pages/lab-list/lab-list.html'
+    templateUrl: 'build/pages/lab-list/lab-list.html',
+    directives: [MapComponent]
 })
 export class LabListPage {
+
+    @ViewChild('map')
+    mapComponent:MapComponent;
 
     @ViewChild('locationList')
     locationList:any;
@@ -30,7 +37,7 @@ export class LabListPage {
 
     private currentLocation:Location;
     private map:google.maps.Map;
-    private labs:any;
+    private labs:Lab[];
     private labLocations:Location[];
     private campuses:any;
     private distanceMatrix:any;
@@ -92,8 +99,8 @@ export class LabListPage {
 
                                             console.debug(`currentLocation: ${currentLocation}`);
 
-                                            this.currentLocation = currentLocation;
-                                            this.map = this.mapService.getMap(this.currentLocation, document.getElementById('map'));
+                                            labListPage.currentLocation = currentLocation;
+                                            labListPage.map = labListPage.mapComponent.getMap(this.currentLocation, document.getElementById('map'));
 
                                             labListPage.labService.findAll().subscribe(
                                                 (data) => {
@@ -128,12 +135,12 @@ export class LabListPage {
                                                                 let filteredResults = labListPage.filterResults(labListPage.labLocations);
                                                                 labListPage.filteredLabLocations = labListPage.sortResults(filteredResults);
 
-                                                                labListPage.mapService.updateLabsOnMap(
+                                                                labListPage.mapComponent.updateLabsOnMap(
                                                                     labListPage.currentLocation,
                                                                     labListPage.filteredLabLocations,
                                                                     labListPage.map);
 
-                                                                labListPage.mapService.infowindowOpened
+                                                                labListPage.mapComponent.infoWindowOpened
                                                                     .subscribe(
                                                                         location => {
                                                                             labListPage.itemSelected(null, location);
@@ -142,7 +149,7 @@ export class LabListPage {
                                                                         () => console.log(`infowindlow clicked`)
                                                                     );
 
-                                                                labListPage.mapService.infowindowClicked
+                                                                labListPage.mapComponent.infoWindowClicked
                                                                     .subscribe(
                                                                         location => {
                                                                             labListPage.itemSelected(null, location);
@@ -317,7 +324,7 @@ export class LabListPage {
             });
         } else {
             this.selectedItem = location;
-            this.mapService.showInfoWindow(location);
+            this.mapComponent.showInfoWindow(location);
         }
     }
 
@@ -369,7 +376,7 @@ export class LabListPage {
                 let filteredResults = labListPage.filterResults(labListPage.labLocations);
                 labListPage.filteredLabLocations = labListPage.sortResults(filteredResults);
 
-                labListPage.mapService.updateLabsOnMap(
+                labListPage.mapComponent.updateLabsOnMap(
                     labListPage.currentLocation,
                     labListPage.filteredLabLocations,
                     labListPage.map);

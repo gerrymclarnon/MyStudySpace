@@ -16,7 +16,7 @@
     <ion-list-header *ngIf="lastUpdated">{{ filteredLabLocations.length }} out of {{ labLocations.length }} Locations -
         {{lastUpdatedFromNowText}}
     </ion-list-header>
-    <div id="map"></div>
+    <map #map></map>
 </ion-content>
 
 <ion-content #locationList>
