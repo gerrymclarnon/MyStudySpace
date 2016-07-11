@@ -9,6 +9,6 @@ The user can filter on campus areas and set their preferred method of travel and
 
 The app has been built with Ionic2 (Angular2 & TypeScript) to give an app like user experience. It also makes for an easy method of creating a native app version in the future.
   
-## GitHub Pages
+## Demo
 
-View a demo of the app at https://gerrymclarnon.github.io/MyStudySpace/.
+View a demo of the web app with static data at https://gerrymclarnon.github.io/MyStudySpace/.
